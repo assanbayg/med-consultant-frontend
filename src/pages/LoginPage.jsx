@@ -5,8 +5,8 @@ import useAuth from "../hooks/useAuth";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { logIn, signUp, error } = useAuth();
-
+  const { logIn, signUp, error, authenticateWithGoogle } = useAuth();
+``
   // const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -19,9 +19,8 @@ export default function LoginPage() {
     await signUp(email, password);
   };
 
-  const handleGoogleLogin = () => {
-    // TODO: Integrate Google login logic later
-    // actually intergrate login logic properly
+  const handleGoogleLogin = async () => {
+    await authenticateWithGoogle();
   };
 
   return (

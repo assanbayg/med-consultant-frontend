@@ -5,6 +5,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 export default function useAuth() {
@@ -44,10 +46,22 @@ export default function useAuth() {
     }
   };
 
+  const authenticateWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, provider)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
   return {
     signUp,
     logIn,
     logOut,
     error,
+    authenticateWithGoogle,
   };
 }
