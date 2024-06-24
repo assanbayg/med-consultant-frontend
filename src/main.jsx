@@ -8,6 +8,8 @@ import ErrorPage from "./pages/ErrorPage";
 import ProfilePage from "./pages/ProfilePage";
 import Chat from "./pages/Chat";
 import LoginPage from "./pages/LoginPage";
+import { AuthProvider } from "./contexts/AuthContext";
+import { Analytics } from "@vercel/analytics/react";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+    <Analytics />
   </React.StrictMode>
 );

@@ -5,7 +5,7 @@
     @apply rounded-lg border border-transparent py-2 px-4 font-medium bg-gray-900 transition-colors duration-200;
   }
 
-  .primary-btn:hover {
+.primary-btn:hover {
     @apply border-indigo-500;
   }
 
