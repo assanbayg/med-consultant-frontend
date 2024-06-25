@@ -1,13 +1,10 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { logIn, signUp, error, authenticateWithGoogle } = useAuth();
-``
-  // const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
