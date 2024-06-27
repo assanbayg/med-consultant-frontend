@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-const ToggleDiv = ({ title, children }) => {
+const ToggleDiv = ({
+  title,
+  children,
+  isTitle = false,
+}) => {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleDiv = () => setIsExpanded(!isExpanded);
@@ -12,16 +16,18 @@ const ToggleDiv = ({ title, children }) => {
     >
       <button onClick={toggleDiv}>
         <p
-          className={`text-2xl font-medium pb-2 text-left text-indigo-400 ${
-            isExpanded ? "my-2" : ""
-          }`}
+          className={`${
+            isTitle
+              ? "text-4xl font-medium mb-2 py-2"
+              : "text-2xl font-medium pb-2 text-left text-indigo-400"
+          } ${isExpanded ? "my-2" : ""}`}
         >
           {title}
         </p>
       </button>
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isExpanded ? "max-h-128" : "max-h-0"
+          isExpanded ? "max-h-128 overflow-y-auto" : "max-h-0"
         }`}
       >
         {children}
