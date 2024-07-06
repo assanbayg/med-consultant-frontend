@@ -25,7 +25,7 @@ const GraphPlaceholder = () => {
     <>
       <iframe src={plotUrl} width={800} height={600}></iframe>
       {error && (
-        <div className="text-red-500 bg-red-50 p-2 rounded-lg">{error}</div>
+        <div className="rounded-lg bg-red-50 p-2 text-red-500">{error}</div>
       )}
     </>
   );

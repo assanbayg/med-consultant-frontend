@@ -4,7 +4,6 @@ import TextAreaField from "../ui/TextAreaField";
 import ToggleDiv from "../ui/ToggleDiv";
 
 const GeneralInformation = ({ values, handleChange }) => (
-  
   <ToggleDiv title="General Information">
     <InputField
       name="clinicName"
@@ -24,7 +23,7 @@ const GeneralInformation = ({ values, handleChange }) => (
       placeholder="Address"
       required
     />
-    <label htmlFor="physiciansNumber" className="block mb-1 text-left">
+    <label htmlFor="physiciansNumber" className="mb-1 block text-left">
       Physicians number
     </label>
     <InputField
@@ -36,7 +35,7 @@ const GeneralInformation = ({ values, handleChange }) => (
       placeholder="Physicians number"
       required
     />
-    <label htmlFor="patientsNumber" className="block mb-1 text-left">
+    <label htmlFor="patientsNumber" className="mb-1 block text-left">
       Patients number
     </label>
     <InputField

@@ -8,7 +8,7 @@ const TextareaField = ({
   error,
 }) => (
   <div className="mb-4">
-    <label htmlFor={id} className="block mb-1 text-left">
+    <label htmlFor={id} className="mb-1 block text-left">
       {label}
     </label>
     <textarea
@@ -18,7 +18,7 @@ const TextareaField = ({
       onChange={onChange}
       required={required}
       placeholder="Type here..."
-      className="w-full px-4 py-2 border outline-none border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 resize-y min-h-24"
+      className="min-h-24 w-full resize-y rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-indigo-500 dark:focus:ring-indigo-500"
     ></textarea>
     {error && <div className="text-red-600">{error}</div>}
   </div>

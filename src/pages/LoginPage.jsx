@@ -22,24 +22,24 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col">
-      <p className="text-4xl font-medium mb-4 ">Med Consultant</p>
+      <p className="mb-4 text-4xl font-medium">Med Consultant</p>
       <form onSubmit={handleLogin} className="flex flex-col gap-y-4">
         <input
-          className=" px-4 py-2 border outline-none border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+          className="rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-indigo-500 dark:focus:ring-indigo-500"
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          className=" px-4 py-2 border outline-none border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+          className="rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-indigo-500 dark:focus:ring-indigo-500"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         {error && (
-          <div className="text-red-500 bg-red-50 p-2 rounded-lg">{error}</div>
+          <div className="rounded-lg bg-red-50 p-2 text-red-500">{error}</div>
         )}
 
         <button type="submit" className="primary-btn" value="logIn">
@@ -47,7 +47,7 @@ export default function LoginPage() {
         </button>
         <button
           type="submit"
-          className="rounded-lg border border-transparent py-2 px-4 hx`over:border-indigo-700  font-medium bg-indigo-400 text-white transition-colors duration-200 focus:outline-none ring-2 ring-offset-0 ring-indigo-700"
+          className="hx`over:border-indigo-700 rounded-lg border border-transparent bg-indigo-400 px-4 py-2 font-medium text-white ring-2 ring-indigo-700 ring-offset-0 transition-colors duration-200 focus:outline-none"
           value="signUp"
           onClick={handleSignUp}
         >

@@ -2,20 +2,20 @@
 
 @layer components {
   .primary-btn {
-    @apply rounded-lg border border-transparent py-2 px-4 font-medium bg-gray-900 transition-colors duration-200;
+    @apply rounded-lg border border-transparent bg-gray-900 px-4 py-2 font-medium transition-colors duration-200;
   }
 
-.primary-btn:hover {
+  .primary-btn:hover {
     @apply border-indigo-500;
   }
 
   .primary-btn:focus,
   .primary-btn:focus-visible,
   .text-input:focus {
-    @apply outline-none ring-2 ring-offset-0 ring-indigo-500;
+    @apply outline-none ring-2 ring-indigo-500 ring-offset-0;
   }
 
   .text-input {
-    @apply dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500;
+    @apply dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-indigo-500 dark:focus:ring-indigo-500;
   }
 }

@@ -5,7 +5,7 @@ export default function ErrorPage() {
   console.error(error);
 
   return (
-    <div className="text-center flex flex-col gap-2">
+    <div className="flex flex-col gap-2 text-center">
       <h1 className="font-medium">Emaa!</h1>
       <p>Osyny kütpedık.</p>
       <p>

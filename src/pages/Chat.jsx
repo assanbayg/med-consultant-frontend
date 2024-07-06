@@ -12,12 +12,12 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex flex-col h-screen w-full justify-between">
+    <div className="flex h-screen w-full flex-col justify-between">
       <div className="">
         <h1>this is a chat</h1>
       </div>
       <MessageList messages={messages} />
-      <div className="fixed bottom-0 flex p-4 gap-x-1">
+      <div className="fixed bottom-0 flex gap-x-1 p-4">
         <InputField
           id={"question"}
           name={"question"}

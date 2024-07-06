@@ -54,8 +54,8 @@ export const ImportFile = () => {
 
   return (
     <ToggleDiv title={"Import files"} isTitle={true}>
-      <div className="flex flex-col max-w-2xl gap-y-4 ">
-        <div className="flex gap-x-2 justify-between">
+      <div className="flex max-w-2xl flex-col gap-y-4">
+        <div className="flex justify-between gap-x-2">
           <label htmlFor="txtFile">Import dialog example (.txt)</label>
           <input
             type="file"
@@ -66,7 +66,7 @@ export const ImportFile = () => {
           />
           <p>{dialogueExample}</p>
         </div>
-        <div className="flex gap-x-2 justify-between">
+        <div className="flex justify-between gap-x-2">
           <label htmlFor="tableFile">
             Import QA example (.csv, .xlsx). Should have two headers - Question
             and Answer

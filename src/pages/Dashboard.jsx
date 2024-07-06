@@ -8,7 +8,7 @@ export default function Dashboard() {
   return currentUser ? (
     <div className="flex">
       <Sidebar />
-      <div id="detail" className="flex-1 ml-80 text-center">
+      <div id="detail" className="ml-80 flex-1 text-center">
         <Outlet />
       </div>
     </div>

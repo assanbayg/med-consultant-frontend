@@ -43,7 +43,7 @@ export default function ProfileForm() {
           handleChange={handleChange}
           diagnosticsOptions={diagnosticsOptions}
         />
-        <button type="submit" className="w-full primary-btn mt-4">
+        <button type="submit" className="primary-btn mt-4 w-full">
           Save information
         </button>
       </form>

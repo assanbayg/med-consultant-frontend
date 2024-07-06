@@ -14,6 +14,6 @@ export const ProfilePicture = () => {
   return photoUrl ? (
     <img className="rounded-full" width={40} height={40} src={photoUrl} />
   ) : (
-    <div className="rounded-full w-10 h-10 bg-indigo-400 hover:bg-indigo-500"></div>
+    <div className="h-10 w-10 rounded-full bg-indigo-400 hover:bg-indigo-500"></div>
   );
 };

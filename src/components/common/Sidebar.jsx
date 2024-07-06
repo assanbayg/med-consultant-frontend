@@ -10,9 +10,9 @@ export default function Sidebar() {
   const { logOut } = useAuth();
 
   return (
-    <aside className="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-gray-50 dark:bg-gray-800">
-      <div className="h-full px-5 py-5 overflow-y-auto ">
-        <p className="text-2xl font-medium mb-2">Med Consultant</p>
+    <aside className="fixed left-0 top-0 z-40 h-screen w-80 -translate-x-full bg-gray-50 transition-transform sm:translate-x-0 dark:bg-gray-800">
+      <div className="h-full overflow-y-auto px-5 py-5">
+        <p className="mb-2 text-2xl font-medium">Med Consultant</p>
         <nav>
           <ul className="space-y-4 font-medium">
             {chats.map((chat) => (
@@ -21,8 +21,8 @@ export default function Sidebar() {
                   to={`/chats/${chat.id}`}
                   className={({ isActive }) =>
                     isActive
-                      ? "block p-2 rounded-lg bg-indigo-500 text-white shadow-md hover:text-white"
-                      : "block p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                      ? "block rounded-lg bg-indigo-500 p-2 text-white shadow-md hover:text-white"
+                      : "block rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                   }
                 >
                   {chat.name}
@@ -32,8 +32,8 @@ export default function Sidebar() {
           </ul>
         </nav>
       </div>
-      <div className="fixed bottom-0 dark:bg-gray-700 p-4 w-full bg-gray-200 flex justify-between">
-        <button className="primary-btn " onClick={logOut}>
+      <div className="fixed bottom-0 flex w-full justify-between bg-gray-200 p-4 dark:bg-gray-700">
+        <button className="primary-btn" onClick={logOut}>
           Log Out
         </button>
         <Link to={"/profile"}>
