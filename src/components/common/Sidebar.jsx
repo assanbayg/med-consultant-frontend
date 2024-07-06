@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { ProfilePicture } from "../ProfilePicture";
 
 export default function Sidebar() {
   const chats = [
@@ -11,7 +12,7 @@ export default function Sidebar() {
   return (
     <aside className="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-gray-50 dark:bg-gray-800">
       <div className="h-full px-5 py-5 overflow-y-auto ">
-        <p className="text-2xl font-medium">Med Consultant</p>
+        <p className="text-2xl font-medium mb-2">Med Consultant</p>
         <nav>
           <ul className="space-y-4 font-medium">
             {chats.map((chat) => (
@@ -35,10 +36,9 @@ export default function Sidebar() {
         <button className="primary-btn " onClick={logOut}>
           Log Out
         </button>
-        <Link
-          to={"/profile"}
-          className="rounded-full w-10 h-10 bg-indigo-400 hover:bg-indigo-500"
-        ></Link>
+        <Link to={"/profile"}>
+          <ProfilePicture />
+        </Link>
       </div>
     </aside>
   );

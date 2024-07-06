@@ -17,7 +17,6 @@ export default function useAuth() {
     setError(null);
     try {
       await createUserWithEmailAndPassword(auth, email, password).then(() => {
-        // redirect to dashboard after successful authorization
         navigate("/");
       });
     } catch (error) {
@@ -29,7 +28,6 @@ export default function useAuth() {
     setError(null);
     try {
       await signInWithEmailAndPassword(auth, email, password).then(() => {
-        // redirect to dashboard after successful authorization
         navigate("/");
       });
     } catch (error) {
@@ -57,11 +55,17 @@ export default function useAuth() {
         setError(error.message);
       });
   };
+
+  const getPhotoUrl = () => {
+    return auth.currentUser.photoURL;
+  };
+
   return {
     signUp,
     logIn,
     logOut,
     error,
     authenticateWithGoogle,
+    getPhotoUrl,
   };
 }

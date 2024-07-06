@@ -21,7 +21,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col">
       <p className="text-4xl font-medium mb-4 ">Med Consultant</p>
       <form onSubmit={handleLogin} className="flex flex-col gap-y-4">
         <input

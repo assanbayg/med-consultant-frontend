@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ToggleDiv from "./ui/ToggleDiv";
+import ToggleDiv from "../ui/ToggleDiv";
 import Papa from "papaparse";
 import readXlsxFile from "read-excel-file";
 
