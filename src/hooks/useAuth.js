@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { auth } from "../services/firebase";
-import { useNavigate } from "react-router-dom";
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
-  GoogleAuthProvider,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { auth } from "../services/firebase";
 
 export default function useAuth() {
   const navigate = useNavigate();

@@ -1,6 +1,7 @@
+import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { useState } from "react";
+
 import { db } from "../services/firebase";
-import { collection, addDoc, doc, getDoc } from "firebase/firestore";
 
 const useOrganization = () => {
   const [organization, setOrganization] = useState(null);

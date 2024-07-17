@@ -1,15 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./styles/index.css";
-import IndexComponent from "./components/IndexComponent";
+import { AuthProvider } from "./contexts/AuthContext";
+import Chat from "./pages/Chat";
 import Dashboard from "./pages/Dashboard";
 import ErrorPage from "./pages/ErrorPage";
-import ProfilePage from "./pages/ProfilePage";
-import Chat from "./pages/Chat";
 import LoginPage from "./pages/LoginPage";
-import { AuthProvider } from "./contexts/AuthContext";
+import ProfilePage from "./pages/ProfilePage";
 import { Analytics } from "@vercel/analytics/react";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+import IndexComponent from "./components/IndexComponent";
+import "./styles/index.css";
 
 const router = createBrowserRouter([
   {

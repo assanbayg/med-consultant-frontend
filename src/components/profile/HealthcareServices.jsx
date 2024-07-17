@@ -1,5 +1,5 @@
-import TextAreaField from "../ui/TextAreaField";
 import CheckBoxList from "../ui/CheckBoxList";
+import TextAreaField from "../ui/TextAreaField";
 import ToggleDiv from "../ui/ToggleDiv";
 
 const HealthcareServices = ({ values, handleChange, diagnosticsOptions }) => (

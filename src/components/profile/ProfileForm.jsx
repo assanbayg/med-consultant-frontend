@@ -1,9 +1,11 @@
-import useForm from "../../hooks/useForm";
 import GeneralInformation from "./GeneralInformation";
-import OperationDetails from "./OperationDetails";
 import HealthcareServices from "./HealthcareServices";
-import ToggleDiv from "../ui/ToggleDiv";
+import OperationDetails from "./OperationDetails";
+
+import useForm from "../../hooks/useForm";
 import useOrganization from "../../hooks/useOrganization";
+
+import ToggleDiv from "../ui/ToggleDiv";
 
 export default function ProfileForm() {
   const { organization, uploadOrganization, loading, error } =

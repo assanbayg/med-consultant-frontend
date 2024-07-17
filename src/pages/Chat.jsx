@@ -1,6 +1,7 @@
 import { useState } from "react";
-import InputField from "../components/ui/InputField";
+
 import { MessageList } from "../components/chat/MessageList";
+import InputField from "../components/ui/InputField";
 
 export default function Chat() {
   const [question, setQuestion] = useState("");

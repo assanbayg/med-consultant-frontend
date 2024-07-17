@@ -1,5 +1,6 @@
+import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { useEffect, useState } from "react";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+
 import { storage } from "../../services/firebase";
 
 const GraphPlaceholder = () => {

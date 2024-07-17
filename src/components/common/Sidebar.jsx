@@ -1,5 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
+
 import useAuth from "../../hooks/useAuth";
+
 import { ProfilePicture } from "../ProfilePicture";
 
 export default function Sidebar() {
