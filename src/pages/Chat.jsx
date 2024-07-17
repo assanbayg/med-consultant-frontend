@@ -7,26 +7,36 @@ export default function Chat() {
   const [messages, setMessages] = useState([]);
 
   const handleSendMessage = () => {
-    setMessages([...messages, { text: question }]);
-    // setQuestion("");
+    if (question.trim() === "") {
+      return;
+    }
+    setMessages([...messages, { text: question, isUser: true }]);
+    setQuestion("");
+    setTimeout(() => {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: "This is a bot response", isUser: false },
+      ]);
+    }, 1000);
   };
 
   return (
-    <div className="flex h-screen w-full flex-col justify-between">
-      <div className="">
-        <h1>this is a chat</h1>
+    <div className="flex h-screen w-full min-w-144 flex-col">
+      <div className="p-4">
+        <h1>This is a chat</h1>
       </div>
-      <MessageList messages={messages} />
-      <div className="fixed bottom-0 flex gap-x-1 p-4">
+      <div className="flex-grow overflow-y-auto p-4">
+        <MessageList messages={messages} />
+      </div>
+      <div className="flex gap-x-1 p-4">
         <InputField
-          id={"question"}
-          name={"question"}
-          type={"text"}
-          placeholder={"Write a question"}
+          id="question"
+          name="question"
+          type="text"
+          placeholder="Write a question"
           value={question}
-          onChange={(e) => {
-            setQuestion(e.target.value);
-          }}
+          onChange={(e) => setQuestion(e.target.value)}
+          className="flex-grow"
         />
         <button className="primary-btn" onClick={handleSendMessage}>
           Send

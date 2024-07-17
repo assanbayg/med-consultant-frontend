@@ -7,8 +7,9 @@ const InputField = ({
   placeholder,
   required,
   error,
+  className,
 }) => (
-  <div className="text-left">
+  <div className={`text-left ${className}`}>
     <input
       name={name}
       id={id}

@@ -60,6 +60,10 @@ export default function useAuth() {
     return auth.currentUser.photoURL;
   };
 
+  const getUserId = () => {
+    return auth.currentUser.getIdToken;
+  };
+
   return {
     signUp,
     logIn,
@@ -67,5 +71,6 @@ export default function useAuth() {
     error,
     authenticateWithGoogle,
     getPhotoUrl,
+    getUserId,
   };
 }

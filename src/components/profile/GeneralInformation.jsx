@@ -6,33 +6,33 @@ import ToggleDiv from "../ui/ToggleDiv";
 const GeneralInformation = ({ values, handleChange }) => (
   <ToggleDiv title="General Information">
     <InputField
-      name="clinicName"
-      id="clinicName"
+      name="orgName"
+      id="orgName"
       type="text"
-      value={values.clinicName}
+      value={values.orgName}
       onChange={handleChange}
       placeholder="Clinic Name"
       required
     />
     <InputField
-      name="address"
-      id="address"
+      name="location"
+      id="location"
       type="text"
-      value={values.address}
+      value={values.location}
       onChange={handleChange}
       placeholder="Address"
       required
     />
-    <label htmlFor="physiciansNumber" className="mb-1 block text-left">
-      Physicians number
+    <label htmlFor="staffNumber" className="mb-1 block text-left">
+      Staff number
     </label>
     <InputField
-      name="physiciansNumber"
-      id="physiciansNumber"
+      name="staffNumber"
+      id="staffNumber"
       type="number"
-      value={values.physiciansNumber}
+      value={values.staffNumber}
       onChange={handleChange}
-      placeholder="Physicians number"
+      placeholder="Staff number"
       required
     />
     <label htmlFor="patientsNumber" className="mb-1 block text-left">

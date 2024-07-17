@@ -1,3 +1,13 @@
-export const Message = ({ text }) => {
-  return <div className="mb-6 rounded bg-slate-200 p-2">{text}</div>;
+export const Message = ({ text, isUser }) => {
+  return (
+    <div
+      className={`mb-6 max-w-80 rounded-lg p-2 ${
+        isUser
+          ? "self-end bg-blue-500 text-white"
+          : "self-start bg-gray-300 text-black"
+      }`}
+    >
+      {text}
+    </div>
+  );
 };

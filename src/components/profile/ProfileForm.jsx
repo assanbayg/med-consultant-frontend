@@ -3,29 +3,31 @@ import GeneralInformation from "./GeneralInformation";
 import OperationDetails from "./OperationDetails";
 import HealthcareServices from "./HealthcareServices";
 import ToggleDiv from "../ui/ToggleDiv";
+import useOrganization from "../../hooks/useOrganization";
 
 export default function ProfileForm() {
+  const { organization, uploadOrganization, loading, error } =
+    useOrganization();
   const { values, handleChange } = useForm({
-    clinicName: "",
+    orgName: "",
     description: "",
-    address: "",
-    physiciansNumber: 0,
+    location: "",
+    staffNumber: 0,
     patientsNumber: 0,
     affiliation: "",
     daysOfOperation: "",
-    appointmentManagement: "",
-    workflowProcesses: "",
-    specialties: "",
-    inHouseLab: false,
-    imaging: false,
-    surgicalProcedures: false,
+    appointmentInstruction: "",
+    workflowDescription: "",
+    specialities: "",
   });
 
-  function submitForm() {
-    console.log("Submit");
-    alert("Forms Data: " + JSON.stringify(values, null, 2));
-    console.log(values);
-  }
+  const saveChanges = async (e) => {
+    e.preventDefault();
+    const id = await uploadOrganization(values);
+    if (id) {
+      alert("Uploaded organization with ID:", id);
+    }
+  };
 
   const diagnosticsOptions = {
     inHouseLab: "In-house Lab Services",
@@ -35,7 +37,7 @@ export default function ProfileForm() {
 
   return (
     <ToggleDiv title="Information about the Clinic" isTitle="true">
-      <form onSubmit={submitForm}>
+      <form onSubmit={saveChanges}>
         <GeneralInformation values={values} handleChange={handleChange} />
         <OperationDetails values={values} handleChange={handleChange} />
         <HealthcareServices
@@ -47,6 +49,14 @@ export default function ProfileForm() {
           Save information
         </button>
       </form>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {organization && (
+        <div>
+          <h2>Organization Details</h2>
+          <pre>{JSON.stringify(organization, null, 2)}</pre>
+        </div>
+      )}
     </ToggleDiv>
   );
 }

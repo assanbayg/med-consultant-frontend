@@ -14,16 +14,16 @@ const OperationDetails = ({ values, handleChange }) => (
       label="Days of Operation"
     />
     <TextAreaField
-      name="appointmentManagement"
-      id="appointmentManagement"
-      value={values.appointmentManagement}
+      name="appointmentInstruction"
+      id="appointmentInstruction"
+      value={values.appointmentInstruction}
       onChange={handleChange}
-      label="Appointment Management (Scheduling methods, average wait times, cancellation policies)"
+      label="Appointment Instruction (Scheduling methods, average wait times, cancellation policies)"
     />
     <TextAreaField
-      name="workflowProcesses"
-      id="workflowProcesses"
-      value={values.workflowProcesses}
+      name="workflowDescription"
+      id="workflowDescription"
+      value={values.workflowDescription}
       onChange={handleChange}
       label="Workflow Processes (Patient intake, documentation, billing, follow-ups)"
     />
