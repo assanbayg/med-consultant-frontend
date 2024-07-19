@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 
-import useAuth from "../../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 import { ProfilePicture } from "../ProfilePicture";
 
@@ -12,7 +12,7 @@ export default function Sidebar() {
   const { logOut } = useAuth();
 
   return (
-    <aside className="fixed left-0 top-0 z-40 h-screen w-80 -translate-x-full bg-gray-50 transition-transform sm:translate-x-0 dark:bg-gray-800">
+    <aside className="fixed left-0 top-0 z-40 h-screen w-64 -translate-x-full bg-gray-50 transition-transform sm:translate-x-0 dark:bg-gray-800">
       <div className="h-full overflow-y-auto px-5 py-5">
         <p className="mb-2 text-2xl font-medium">Med Consultant</p>
         <nav>

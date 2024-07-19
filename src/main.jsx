@@ -7,42 +7,26 @@ import ProfilePage from "./pages/ProfilePage";
 import { Analytics } from "@vercel/analytics/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import IndexComponent from "./components/IndexComponent";
 import "./styles/index.css";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Dashboard />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <IndexComponent />,
-      },
-      {
-        path: "/profile",
-        element: <ProfilePage />,
-      },
-      {
-        path: "/chats/:chatId",
-        element: <Chat />,
-      },
-    ],
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-]);
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Dashboard />}>
+            <Route index element={<IndexComponent />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="chats/:chatId" element={<Chat />} />
+          </Route>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
     <Analytics />
   </React.StrictMode>,
 );

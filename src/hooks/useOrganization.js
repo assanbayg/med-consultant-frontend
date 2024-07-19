@@ -1,9 +1,11 @@
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
-import { useState } from "react";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { useContext, useState } from "react";
 
+import { AuthContext } from "../contexts/AuthContext";
 import { db } from "../services/firebase";
 
 const useOrganization = () => {
+  const { currentUser } = useContext(AuthContext);
   const [organization, setOrganization] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,12 +15,17 @@ const useOrganization = () => {
     setLoading(true);
     setError(null);
     try {
-      const docRef = await addDoc(collection(db, "organizations"), org);
+      const docRef = doc(db, "organizations", currentUser.uid);
+      const docSnapshot = await getDoc(docRef);
+
+      if (docSnapshot.exists()) {
+        await updateDoc(docRef, org);
+      } else {
+        await setDoc(docRef, org);
+      }
       setLoading(false);
       return docRef.id;
     } catch (error) {
-      alert(error.message);
-      alert(error);
       console.log(error);
       setLoading(false);
       setError(error);
@@ -26,7 +33,7 @@ const useOrganization = () => {
   };
 
   // retrieve organization by id
-  const getOrganizationById = async (id) => {
+  const getOrganizationById = async (id = currentUser.uid) => {
     setLoading(true);
     setError(null);
     try {

@@ -5,11 +5,11 @@ import ToggleDiv from "../ui/ToggleDiv";
 const HealthcareServices = ({ values, handleChange, diagnosticsOptions }) => (
   <ToggleDiv title="Healthcare Services">
     <TextAreaField
-      name="specialties"
-      id="specialties"
-      value={values.specialties}
+      name="specialities"
+      id="specialities"
+      value={values.specialities}
       onChange={handleChange}
-      label="Specialties Offered"
+      label="Specialities Offered"
     />
     <CheckBoxList
       options={diagnosticsOptions}

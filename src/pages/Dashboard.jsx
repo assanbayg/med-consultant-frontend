@@ -1,8 +1,8 @@
 import { Link, Outlet } from "react-router-dom";
 
-import Sidebar from "../components/common/Sidebar";
+import { useAuth } from "../hooks/useAuth";
 
-import { useAuth } from "../contexts/AuthContext";
+import Sidebar from "../components/common/Sidebar";
 
 export default function Dashboard() {
   const { currentUser } = useAuth();

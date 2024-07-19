@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 
-import useAuth from "../hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
 
 export const ProfilePicture = () => {
-  const { getPhotoUrl } = useAuth();
+  const { currentUser } = useAuth();
 
   const [photoUrl, setPhotoUrl] = useState("");
 
   useEffect(() => {
-    const url = getPhotoUrl();
+    const url = currentUser.photoURL;
     setPhotoUrl(url);
-  }, [getPhotoUrl]);
+  }, [currentUser.photoURL]);
 
   return photoUrl ? (
     <img className="rounded-full" width={40} height={40} src={photoUrl} />

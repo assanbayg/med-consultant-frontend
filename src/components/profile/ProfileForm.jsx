@@ -1,6 +1,7 @@
 import GeneralInformation from "./GeneralInformation";
 import HealthcareServices from "./HealthcareServices";
 import OperationDetails from "./OperationDetails";
+import { useEffect } from "react";
 
 import useForm from "../../hooks/useForm";
 import useOrganization from "../../hooks/useOrganization";
@@ -8,9 +9,14 @@ import useOrganization from "../../hooks/useOrganization";
 import ToggleDiv from "../ui/ToggleDiv";
 
 export default function ProfileForm() {
-  const { organization, uploadOrganization, loading, error } =
-    useOrganization();
-  const { values, handleChange } = useForm({
+  const {
+    organization,
+    uploadOrganization,
+    getOrganizationById,
+    loading,
+    error,
+  } = useOrganization();
+  const { values, handleChange, setValues } = useForm({
     orgName: "",
     description: "",
     location: "",
@@ -22,6 +28,27 @@ export default function ProfileForm() {
     workflowDescription: "",
     specialities: "",
   });
+
+  useEffect(() => {
+    getOrganizationById();
+  }, []);
+
+  useEffect(() => {
+    if (organization) {
+      setValues({
+        orgName: organization.orgName || "",
+        description: organization.description || "",
+        location: organization.location || "",
+        staffNumber: organization.staffNumber || 0,
+        patientsNumber: organization.patientsNumber || 0,
+        affiliation: organization.affiliation || "",
+        daysOfOperation: organization.daysOfOperation || "",
+        appointmentInstruction: organization.appointmentInstruction || "",
+        workflowDescription: organization.workflowDescription || "",
+        specialities: organization.specialities || "",
+      });
+    }
+  }, [organization, setValues]);
 
   const saveChanges = async (e) => {
     e.preventDefault();
@@ -53,12 +80,6 @@ export default function ProfileForm() {
       </form>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
-      {organization && (
-        <div>
-          <h2>Organization Details</h2>
-          <pre>{JSON.stringify(organization, null, 2)}</pre>
-        </div>
-      )}
     </ToggleDiv>
   );
 }
