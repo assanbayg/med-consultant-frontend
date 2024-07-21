@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IoPersonCircle } from "react-icons/io5";
 
 import { useAuth } from "../hooks/useAuth";
 
@@ -15,6 +16,6 @@ export const ProfilePicture = () => {
   return photoUrl ? (
     <img className="rounded-full" width={40} height={40} src={photoUrl} />
   ) : (
-    <div className="h-10 w-10 rounded-full bg-indigo-400 hover:bg-indigo-500"></div>
+    <IoPersonCircle size={40} />
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IoLogoGoogle } from "react-icons/io";
 
 import { useAuth } from "../hooks/useAuth";
 
@@ -55,8 +56,11 @@ export default function LoginPage() {
           Sign Up
         </button>
       </form>
-      <button className="primary-btn mt-3 w-full" onClick={handleGoogleLogin}>
-        Login with Google
+      <button
+        className="primary-btn mt-3 w-full flex items-center justify-center"
+        onClick={handleGoogleLogin}
+      >
+        <IoLogoGoogle size={24} />
       </button>
     </div>
   );

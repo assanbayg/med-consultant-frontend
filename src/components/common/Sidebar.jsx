@@ -1,3 +1,4 @@
+import { IoExitOutline } from "react-icons/io5";
 import { Link, NavLink } from "react-router-dom";
 
 import { useAuth } from "../../hooks/useAuth";
@@ -34,9 +35,9 @@ export default function Sidebar() {
           </ul>
         </nav>
       </div>
-      <div className="fixed bottom-0 flex w-full justify-between bg-gray-200 p-4 dark:bg-gray-700">
+      <div className="fixed bottom-0 flex w-full justify-between items-center bg-gray-200 p-4 dark:bg-gray-700">
         <button className="primary-btn" onClick={logOut}>
-          Log Out
+          <IoExitOutline size={24} />
         </button>
         <Link to={"/profile"}>
           <ProfilePicture />
