@@ -1,24 +1,20 @@
 import { useState } from "react";
 
-import { MessageList } from "../components/chat/MessageList";
+import useChatRequest from "../hooks/useChatRequest";
+
+import MessageList from "../components/chat/MessageList";
+import SendButton from "../components/chat/SendButton";
 import InputField from "../components/ui/InputField";
 
 export default function Chat() {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([]);
+  const { sendMessage, isLoading } = useChatRequest();
 
-  const handleSendMessage = () => {
-    if (question.trim() === "") {
-      return;
-    }
-    setMessages([...messages, { text: question, isUser: true }]);
+  const handleSend = async (e) => {
+    e.preventDefault();
+    await sendMessage(question, setMessages);
     setQuestion("");
-    setTimeout(() => {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { text: "This is a bot response", isUser: false },
-      ]);
-    }, 1000);
   };
 
   return (
@@ -39,9 +35,7 @@ export default function Chat() {
           onChange={(e) => setQuestion(e.target.value)}
           className="flex-grow"
         />
-        <button className="primary-btn" onClick={handleSendMessage}>
-          Send
-        </button>
+        <SendButton onClick={handleSend} isLoading={isLoading} />
       </div>
     </div>
   );

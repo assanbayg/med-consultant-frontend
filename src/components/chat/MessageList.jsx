@@ -1,6 +1,6 @@
 import { Message } from "./Message";
 
-export const MessageList = ({ messages }) => {
+export default function MessageList({ messages }) {
   return (
     <div className="flex flex-1 flex-col overflow-y-auto p-2">
       {messages.map((message, index) => (
@@ -8,4 +8,4 @@ export const MessageList = ({ messages }) => {
       ))}
     </div>
   );
-};
+}
