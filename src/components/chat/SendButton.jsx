@@ -1,21 +1,20 @@
 import { IoSend, IoStop } from "react-icons/io5";
 
-export default function SendButton({ onClick, isLoading }) {
+export default function SendButton({ onClick, onAbort, isLoading }) {
   return (
     <>
       <button
-        className="rounded-btn bg-gray-900"
-        onClick={onClick}
-        disabled={isLoading}
+        className="rounded-btn bg-slate-50 dark:bg-gray-900"
+        onClick={isLoading ? onAbort : onClick}
       >
         {isLoading ? <IoStop /> : <IoSend />}
       </button>
       <button
         className="rounded-btn bg-red-800"
-        onClick={onClick}
-        disabled={!isLoading}
+        onClick={onAbort}
+        disabled={true}
       >
-        <IoStop />
+        <IoStop color="white" />
       </button>
     </>
   );

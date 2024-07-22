@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function useChatRequest() {
   const [isLoading, setIsLoading] = useState(false);
+  const abortControllerRef = useRef(null);
 
   const sendMessage = async (question, setMessages) => {
     if (!question.trim()) return;
@@ -13,15 +14,20 @@ export default function useChatRequest() {
     ]);
     setIsLoading(true);
 
+    abortControllerRef.current = new AbortController();
+    const signal = abortControllerRef.current.signal;
+    const url = "http://127.0.0.1:5000/api/chat";
+
     // for now I used my own mini backend for testing streaming
     // need to rewrite once I receive API documentation from Akbar agai
     try {
-      const res = await fetch("http://127.0.0.1:5000/api/chat", {
+      const res = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ prompt: question }),
+        signal,
       });
 
       const reader = res.body.getReader(); // receive reponse body as stream
@@ -45,15 +51,27 @@ export default function useChatRequest() {
         }
       }
     } catch (error) {
-      console.error("Error fetching the chat response:", error);
-      setMessages((prevMessages) => [
-        ...prevMessages.slice(0, -1), // remove the placeholder
-        { text: "Error: Could not fetch response.", isUser: false },
-      ]);
+      if (error.name === "AbortError") {
+        console.log("Aborted");
+      } else {
+        console.error("Error fetching the chat response:", error);
+        setMessages((prevMessages) => [
+          ...prevMessages.slice(0, -1), // remove the placeholder
+          { text: "Error: Could not fetch response.", isUser: false },
+        ]);
+      }
     } finally {
       setIsLoading(false);
     }
   };
 
-  return { sendMessage, isLoading };
+  const abortRequest = () => {
+    console.log("1");
+    if (abortControllerRef.current) {
+      console.log(2);
+      abortControllerRef.current.abort();
+    }
+  };
+
+  return { sendMessage, abortRequest, isLoading };
 }

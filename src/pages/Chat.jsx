@@ -9,12 +9,16 @@ import InputField from "../components/ui/InputField";
 export default function Chat() {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([]);
-  const { sendMessage, isLoading } = useChatRequest();
+  const { sendMessage, abortRequest, isLoading } = useChatRequest();
 
   const handleSend = async (e) => {
     e.preventDefault();
     await sendMessage(question, setMessages);
     setQuestion("");
+  };
+
+  const handleAbort = () => {
+    abortRequest();
   };
 
   return (
@@ -35,7 +39,11 @@ export default function Chat() {
           onChange={(e) => setQuestion(e.target.value)}
           className="flex-grow"
         />
-        <SendButton onClick={handleSend} isLoading={isLoading} />
+        <SendButton
+          onClick={handleSend}
+          onAbort={handleAbort}
+          isLoading={isLoading}
+        />
       </div>
     </div>
   );
