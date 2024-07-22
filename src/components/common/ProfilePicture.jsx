@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { IoPersonCircle } from "react-icons/io5";
 
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 export const ProfilePicture = () => {
   const { currentUser } = useAuth();
