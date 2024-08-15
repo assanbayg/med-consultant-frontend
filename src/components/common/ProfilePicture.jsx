@@ -14,8 +14,13 @@ export const ProfilePicture = () => {
   }, [currentUser.photoURL]);
 
   return photoUrl ? (
-    <img className="rounded-full" width={40} height={40} src={photoUrl} />
+    <img
+      className="rounded-full hover:brightness-75"
+      width={40}
+      height={40}
+      src={photoUrl}
+    />
   ) : (
-    <IoPersonCircle size={40} />
+    <IoPersonCircle className="" size={40} />
   );
 };

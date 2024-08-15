@@ -1,20 +1,33 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import useChatRequest from "../hooks/useChatRequest";
+import useOrganization from "../hooks/useOrganization";
 
 import MessageList from "../components/chat/MessageList";
 import SendButton from "../components/chat/SendButton";
 import InputField from "../components/ui/InputField";
 
 export default function Chat() {
+  const { chatId } = useParams();
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([]);
   const { sendMessage, abortRequest, isLoading } = useChatRequest();
+  const { loadChatMessages } = useOrganization();
+
+  const memoizedLoadChatMessages = useCallback(async () => {
+    const loadedMessages = await loadChatMessages(chatId);
+    setMessages(loadedMessages);
+  }, [chatId, loadChatMessages]);
+
+  useEffect(() => {
+    memoizedLoadChatMessages();
+  }, [chatId]);
 
   const handleSend = async (e) => {
     e.preventDefault();
-    await sendMessage(question, setMessages);
     setQuestion("");
+    await sendMessage(chatId, question, setMessages);
   };
 
   const handleAbort = () => {

@@ -1,11 +1,15 @@
+import useOrganization from "./useOrganization";
 import { useRef, useState } from "react";
 
 export default function useChatRequest() {
   const [isLoading, setIsLoading] = useState(false);
   const abortControllerRef = useRef(null);
+  const { sendMessageFB } = useOrganization();
 
-  const sendMessage = async (question, setMessages) => {
+  const sendMessage = async (chatId, question, setMessages) => {
     if (!question.trim()) return;
+
+    sendMessageFB(chatId, question, true);
 
     setMessages((prevMessages) => [
       ...prevMessages,
@@ -50,6 +54,7 @@ export default function useChatRequest() {
           });
         }
       }
+      sendMessageFB(chatId, answer, false );
     } catch (error) {
       if (error.name === "AbortError") {
         console.log("Aborted");

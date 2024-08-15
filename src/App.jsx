@@ -13,7 +13,8 @@ const App = () => {
       <Route path="/" element={<Dashboard />}>
         <Route index element={<IndexComponent />} />
         <Route path="profile" element={<ProfilePage />} />
-        <Route path="chats/:chatId" element={<Chat />} />
+        <Route path="ai-chats/:chatId" element={<Chat />} />
+        <Route path="real-chats/:chatId" element={<Chat />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="*" element={<ErrorPage />} />
