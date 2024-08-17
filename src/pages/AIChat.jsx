@@ -8,11 +8,11 @@ import MessageList from "../components/chat/MessageList";
 import SendButton from "../components/chat/SendButton";
 import InputField from "../components/ui/InputField";
 
-export default function Chat() {
+export default function AIChat() {
   const { chatId } = useParams();
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([]);
-  const { sendMessage, abortRequest, isLoading } = useChatRequest();
+  const { sendUserMessage, abortRequest, isLoading } = useChatRequest();
   const { loadChatMessages } = useOrganization();
 
   const memoizedLoadChatMessages = useCallback(async () => {
@@ -27,7 +27,7 @@ export default function Chat() {
   const handleSend = async (e) => {
     e.preventDefault();
     setQuestion("");
-    await sendMessage(chatId, question, setMessages);
+    await sendUserMessage(chatId, question, setMessages);
   };
 
   const handleAbort = () => {
@@ -35,7 +35,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="flex h-screen w-full min-w-144 flex-col">
+    <div className="flex h-screen min-w-144 flex-col">
       <div className="p-4">
         <h1>This is a chat</h1>
       </div>
